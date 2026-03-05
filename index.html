@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8M · Journée internationale des droits des femmes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #fdedf5 0%, #f9e5f0 100%);
+            color: #2d2d2d;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --morado: #6a1b9a;
+            --morado-claro: #b47cd1;
+            --verde: #2e7d32;
+            --blanco-rosado: #fff9fb;
+            --gris-oscuro: #2c3e50;
+            --oro: #ffd700;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a1b9a, #9c4dca);
+            color: white;
+            padding: 3rem 1.5rem 2.5rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 30px rgba(106, 27, 154, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "✧";
+            font-size: 15rem;
+            position: absolute;
+            top: -50px;
+            right: -30px;
+            opacity: 0.1;
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 5px 5px 0 #4a0072;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 i {
+            font-size: 3rem;
+            margin: 0 15px;
+            color: var(--oro);
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        header p {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            font-weight: 300;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 0.6rem 3rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .banderas {
+            margin-top: 1.5rem;
+            font-size: 2.5rem;
+            letter-spacing: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contador {
+            background: rgba(255,255,255,0.15);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: 2px solid white;
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contador span {
+            color: var(--oro);
+            font-size: 2rem;
+            margin: 0 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .intro-card {
+            background: linear-gradient(145deg, white, #fff9fb);
+            border-radius: 50px 50px 50px 0;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 30px 40px -20px rgba(106, 27, 154, 0.3);
+            border-left: 15px solid var(--verde);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 40px 50px -15px #6a1b9a;
+        }
+
+        .intro-card h2 {
+            font-size: 2.5rem;
+            color: var(--morado);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-card h2 i {
+            background: linear-gradient(135deg, var(--morado), var(--morado-claro));
+            padding: 15px;
+            border-radius: 50%;
+            color: white;
+            box-shadow: 0 10px 15px -5px var(--morado);
+        }
+
+        .intro-card p {
+            font-size: 1.3rem;
+            color: #1f2a36;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-card .highlight {
+            background: linear-gradient(135deg, #ffd966, #ffe69b);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #6a1b9a;
+            display: inline-block;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .derechos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin: 3rem 0 3rem;
+        }
+
+        .derecho-item {
+            background: white;
+            border-radius: 40px 40px 40px 0;
+            padding: 2.5rem 1.8rem;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-bottom: 10px solid transparent;
+            border-image: linear-gradient(90deg, var(--morado), var(--verde));
+            border-image-slice: 1;
+            position: relative;
+            cursor: pointer;
+            
+            /* SOLUTION POUR L'ALIGNEMENT */
+            height: 340px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .derecho-item:hover {
+            transform: translateY(-20px) scale(1.02);
+            border-bottom: 10px solid var(--morado);
+            box-shadow: 0 40px 50px -15px #6a1b9a;
+        }
+
+        .derecho-item i {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #8e24aa, #43a047);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .derecho-item:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .derecho-item h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--morado);
+            margin-bottom: 0.8rem;
+            text-align: center;
+            width: 100%;
+            min-height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .derecho-item p {
+            font-size: 1.15rem;
+            color: #2d3e4f;
+            text-align: center;
+            width: 100%;
+            
+            /* SOLUTION POUR LE TEXTE */
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0 0.3rem;
+            line-height: 1.5;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 60px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline h2 {
+            font-size: 2.5rem;
+            color: var(--morado);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .timeline-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, #f8f0fa, #fff);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--morado);
+            transform: scale(1.05);
+        }
+
+        .timeline-item .year {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--verde);
+            text-shadow: 2px 2px 0 #e1bee7;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--morado);
+        }
+
+        .frase-celebre {
+            background: linear-gradient(135deg, #1e3c2c, #2a6b47);
+            color: white;
+            border-radius: 100px 30px 100px 30px;
+            padding: 3.5rem 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 40px 50px -15px #1b3b2b;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .frase-celebre blockquote {
+            font-size: 2.3rem;
+            font-weight: 500;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+            quotes: "«" "»";
+        }
+
+        .frase-celebre blockquote::before {
+            content: "«";
+            font-size: 6rem;
+            line-height: 0.8rem;
+            vertical-align: middle;
+            margin-right: 15px;
+            color: var(--oro);
+        }
+
+        .frase-celebre blockquote::after {
+            content: "»";
+            font-size: 6rem;
+            line-height: 0.8rem;
+            vertical-align: middle;
+            margin-left: 15px;
+            color: var(--oro);
+        }
+
+        .frase-celebre .autora {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #ffd95c;
+        }
+
+        .participa {
+            background: linear-gradient(145deg, #faf0fa, #f5e5f5);
+            padding: 3rem 2.5rem;
+            border-radius: 60px;
+            margin: 4rem 0;
+            border: 5px solid white;
+            box-shadow: inset 0 0 0 4px var(--morado-claro), 0 25px 30px rgba(0,0,0,0.1);
+        }
+
+        .participa h2 {
+            font-size: 2.8rem;
+            color: var(--morado);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .participa ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .participa li {
+            background: white;
+            padding: 1rem 2.5rem 1rem 2rem;
+            border-radius: 70px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            box-shadow: 0 8px 0 #ac5ca0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 3px solid var(--morado-claro);
+            transition: all 0.2s ease;
+        }
+
+        .participa li i {
+            color: var(--verde);
+            font-size: 2rem;
+        }
+
+        .participa li:hover {
+            background: var(--morado);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 13px 0 #4a0072;
+            border-color: white;
+        }
+
+        .credit-btn {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background: linear-gradient(135deg, var(--morado), #9c27b0);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 3px solid white;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .credit-btn:hover {
+            transform: scale(1.2) rotate(360deg);
+            background: linear-gradient(135deg, #9c27b0, var(--morado));
+            box-shadow: 0 15px 35px #6a1b9a;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .popup-content {
+            background: linear-gradient(145deg, #f3e5f5, #ffffff);
+            padding: 3rem 3.5rem;
+            border-radius: 60px 20px 60px 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+            border: 3px solid white;
+            position: relative;
+            animation: pop 0.3s ease-out;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-content i {
+            font-size: 4.5rem;
+            color: var(--morado);
+            margin-bottom: 1rem;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .popup-content h3 {
+            font-size: 3rem;
+            color: #2e7d32;
+            margin: 0.5rem 0;
+            font-weight: 800;
+        }
+
+        .popup-content p {
+            font-size: 1.6rem;
+            color: #4a2c4a;
+            font-weight: 500;
+            border-top: 2px dashed var(--morado-claro);
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #b23c1c;
+            background: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border: 2px solid var(--morado);
+        }
+
+        .close-popup:hover {
+            background: #f08080;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2c1b2e, #3d2340);
+            color: #e0cbe0;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            font-size: 1.3rem;
+            border-top: 10px solid var(--morado);
+            position: relative;
+        }
+
+        footer strong {
+            color: #ffb6f0;
+            font-size: 1.7rem;
+        }
+
+        .mensaje-prof {
+            background: #f8f0fa;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-align: center;
+            margin: 2rem auto;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--morado);
+            border: 2px solid var(--morado-claro);
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 15px rgba(106, 27, 154, 0.1);
+        }
+
+        .flag-spain {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 1.5rem;
+        }
+
+        .titulo-derechos {
+            font-size: 2.8rem;
+            color: #4a2c4a;
+            margin: 2rem 0 1rem 0;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .titulo-derechos::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--morado), var(--verde));
+            border-radius: 2px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1.3rem; }
+            .frase-celebre blockquote { font-size: 1.6rem; }
+            .popup-content { padding: 2rem; }
+            .popup-content h3 { font-size: 2.2rem; }
+            .derecho-item { 
+                height: 380px; 
+                padding: 2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>
+        <i class="fas fa-venus-mars"></i> 8 MARS <i class="fas fa-fist-raised"></i>
+    </h1>
+    <p>Journée internationale des droits des femmes</p>
+    <div class="banderas">
+        <span class="flag-spain">🇪🇸</span>
+        <span class="flag-spain">🇪🇸</span>
+        <span class="flag-spain">🇪🇸</span>
+    </div>
+    <div class="contador" id="contador">
+        <i class="fa-regular fa-calendar"></i> Prochain 8M dans <span id="dias">0</span> jours
+    </div>
+</header>
+
+<main class="container">
+    <!-- Message stylé -->
+    <div class="mensaje-prof animate-on-scroll">
+        <i class="fas fa-star"></i> 8M · Trabajo de español
+    </div>
+
+    <section class="intro-card animate-on-scroll">
+        <h2>
+            <i class="fas fa-scale-balanced"></i> 
+            Nos droits, maintenant et toujours
+        </h2>
+        <p>
+            Le <strong>8M</strong> n'est pas qu'une date, c'est la mémoire des luttes passées et l'élan pour celles à venir.
+            Nous nous souvenons de celles qui ont élevé la voix pour l'égalité, la justice et la liberté.
+            Les droits des femmes sont <span style="color:#a13d63; font-weight:600;">des droits humains</span>.
+            Chaque geste compte, chaque voix s'additionne.
+            <span class="flag-spain">🇪🇸</span>
+        </p>
+        <span class="highlight"><i class="fa-regular fa-heart"></i> #8M #DroitsDesFemmes #NiUnaMenos</span>
+    </section>
+
+    <div class="timeline animate-on-scroll">
+        <h2>📜 Dates clés des droits des femmes</h2>
+        <div class="timeline-grid">
+            <div class="timeline-item">
+                <div class="year">1908</div>
+                <p>15 000 femmes manifestent à New York</p>
+            </div>
+            <div class="timeline-item">
+                <div class="year">1910</div>
+                <p>Proclamation du 8 mars par Clara Zetkin</p>
+            </div>
+            <div class="timeline-item">
+                <div class="year">1945</div>
+                <p>Droit de vote en France</p>
+            </div>
+            <div class="timeline-item">
+                <div class="year">1975</div>
+                <p>1ère journée officielle à l'ONU</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="titulo-derechos animate-on-scroll">
+        ⚡ Droits fondamentaux ⚡
+    </h2>
+    
+    <div class="derechos-grid">
+        <div class="derecho-item animate-on-scroll">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3>Vie sans violence</h3>
+            <p>Une vie sans agressions physiques, psychologiques ou économiques.</p>
+        </div>
+        <div class="derecho-item animate-on-scroll">
+            <i class="fas fa-coins"></i>
+            <h3>Égalité salariale</h3>
+            <p>Même travail, même salaire. L'écart salarial doit disparaître.</p>
+        </div>
+        <div class="derecho-item animate-on-scroll">
+            <i class="fas fa-gavel"></i>
+            <h3>Participation politique</h3>
+            <p>Décider dans tous les espaces de pouvoir. Parité maintenant !</p>
+        </div>
+        <div class="derecho-item animate-on-scroll">
+            <i class="fas fa-book-open"></i>
+            <h3>Éducation égalitaire</h3>
+            <p>Éducation sans stéréotypes pour toutes les filles.</p>
+        </div>
+        <div class="derecho-item animate-on-scroll">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Santé intégrale</h3>
+            <p>Accès à la santé sexuelle et reproductive pour toutes.</p>
+        </div>
+        <div class="derecho-item animate-on-scroll">
+            <i class="fas fa-users"></i>
+            <h3>Soins justes</h3>
+            <p>Reconnaissance du travail domestique. Corresponsabilité !</p>
+        </div>
+    </div>
+
+    <div class="frase-celebre animate-on-scroll">
+        <i class="fas fa-quote-right"></i>
+        <blockquote>
+            Un monde où les droits des femmes sont respectés est un monde meilleur pour toute l'humanité.
+        </blockquote>
+        <div class="autora">— Rigoberta Menchú Tum <span class="flag-spain">🇪🇸</span></div>
+    </div>
+
+    <section class="participa animate-on-scroll">
+        <h2>
+            <i class="fas fa-calendar-check"></i> 
+            Comment participer ?
+        </h2>
+        <ul>
+            <li><i class="fas fa-person-walking"></i> Manifestations</li>
+            <li><i class="fas fa-megaphone"></i> Informer</li>
+            <li><i class="fas fa-paint-brush"></i> Créer</li>
+            <li><i class="fas fa-donate"></i> Soutenir</li>
+            <li><i class="fas fa-chalkboard-user"></i> Éduquer</li>
+            <li><i class="fas fa-handcuffs"></i> Exiger</li>
+        </ul>
+    </section>
+
+    <div style="display: flex; justify-content: center; margin: 3rem 0;">
+        <div style="background: white; border-radius: 80px; padding: 1.5rem 3rem; box-shadow: 0 0 0 5px #d9b3d9;">
+            <span style="font-size: 2rem; font-weight: 700; color: var(--morado);">
+                <i class="fa-regular fa-clock"></i> 365 jours ✶ 8M toujours
+                <span class="flag-spain">🇪🇸</span>
+            </span>
+        </div>
+    </div>
+</main>
+
+<div class="credit-btn" id="creditButton" title="Arthur Jourdan">
+    <i class="fa-regular fa-star"></i>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <i class="fa-regular fa-circle-check" style="color: #2e7d32;"></i>
+        <h3>Arthur Jourdan</h3>
+        <p>design & développement</p>
+        <div style="margin-top: 1rem; font-size: 1.2rem; color: #4a0072;">
+            #8M · droits des femmes
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>
+        <strong>Droits des femmes · 8 mars</strong> 
+        <i class="fas fa-asterisk"></i> En mémoire des ouvrières de 1908
+        <span class="flag-spain">🇪🇸</span>
+    </p>
+    <p style="font-size: 1.2rem; margin-top: 1.5rem;">
+        <i class="fa-regular fa-copyright"></i> Site créé par <strong style="color: #ffb6f0;">Arthur Jourdan</strong>
+    </p>
+</footer>
+
+<script>
+    (function() {
+        function updateCounter() {
+            const today = new Date();
+            const nextMarch8 = new Date(today.getFullYear(), 2, 8);
+            if (today > nextMarch8) {
+                nextMarch8.setFullYear(nextMarch8.getFullYear() + 1);
+            }
+            const diffTime = nextMarch8 - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('dias').textContent = diffDays;
+        }
+        updateCounter();
+
+        const creditBtn = document.getElementById('creditButton');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const closePopup = document.getElementById('closePopup');
+
+        function openPopup() {
+            popupOverlay.style.display = 'flex';
+        }
+
+        function closePopupFunc() {
+            popupOverlay.style.display = 'none';
+        }
+
+        setTimeout(openPopup, 1500);
+
+        creditBtn.addEventListener('click', openPopup);
+        closePopup.addEventListener('click', closePopupFunc);
+
+        popupOverlay.addEventListener('click', function(e) {
+            if (e.target === popupOverlay) {
+                closePopupFunc();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
+                closePopupFunc();
+            }
+        });
+
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        animateElements.forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    })();
+</script>
+
+</body>
+</html>
