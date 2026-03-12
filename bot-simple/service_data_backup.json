@@ -1,0 +1,42 @@
+{
+    "1109426747616804944": {
+        "username": "titebullesssss",
+        "is_active": false,
+        "is_paused": false,
+        "service_start": null,
+        "pause_start": null,
+        "total_service_time": 0,
+        "current_session_start": null,
+        "additional_time": 0,
+        "reminded_2h": false,
+        "reminded_4h": false,
+        "stats": {
+            "total_services": 5,
+            "total_time": 3659.329503,
+            "pause_count": 2,
+            "total_pause_time": 12.907881,
+            "last_service": "2026-03-11T17:14:16.419308",
+            "avg_service_time": 731.8659006
+        }
+    },
+    "835677282424193075": {
+        "username": "desuntox_dsf",
+        "is_active": false,
+        "is_paused": false,
+        "service_start": null,
+        "pause_start": null,
+        "total_service_time": 0,
+        "current_session_start": null,
+        "additional_time": 0,
+        "reminded_2h": false,
+        "reminded_4h": false,
+        "stats": {
+            "total_services": 1,
+            "total_time": 21.745465,
+            "pause_count": 0,
+            "total_pause_time": 0,
+            "last_service": "2026-03-11T19:36:04.717519",
+            "avg_service_time": 21.745465
+        }
+    }
+}
